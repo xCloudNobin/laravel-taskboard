@@ -3,7 +3,7 @@
 A small but functional project/task board built with the **Laravel framework** as a canonical application for deployment-target compatibility testing. It ships a real UI, ORM-backed persistence, session authentication, validated CRUD, search/filter, and one database-backed background job.
 
 - **Framework:** Laravel 13 (Laravel Framework 13.x)
-- **Runtime:** PHP 8.4 (composer constraint `^8.3`), Composer 2.x, Node.js 22 / npm 10 for the Vite asset build
+- **Runtime:** PHP 8.4.1+ (composer constraint `^8.4`), Composer 2.x, Node.js 22 / npm 10 for the Vite asset build
 - **Database:** SQLite via Eloquent (default), with an explicit persistent path
 - **Queue / cache / sessions:** database-backed (single-process friendly)
 - **License:** MIT — see [LICENSE](LICENSE)
@@ -39,7 +39,7 @@ tests/                    PHPUnit feature/unit tests
 
 ## Requirements
 
-- PHP 8.3 or 8.4 with extensions: `pdo_sqlite`, `mbstring`, `tokenizer`, `xml`, `ctype`, `bcmath`, `openssl`, `curl`, `fileinfo`
+- PHP 8.4.1 or newer with extensions: `pdo_sqlite`, `mbstring`, `tokenizer`, `xml`, `ctype`, `bcmath`, `openssl`, `curl`, `fileinfo`
 - Composer 2.x
 - Node.js 22 / npm (for the Vite/Tailwind asset build)
 - No external services (no Redis, no separate queue). Everything is database-backed.

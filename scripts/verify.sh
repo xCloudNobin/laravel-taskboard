@@ -52,7 +52,13 @@ npm -v
 
 PHP_MAJOR="$(php -r 'echo PHP_MAJOR_VERSION;')"
 PHP_MINOR="$(php -r 'echo PHP_MINOR_VERSION;')"
-[[ "$PHP_MAJOR" -ge 8 && "$PHP_MINOR" -ge 3 ]] && ok "PHP >= 8.3" || fail "PHP >= 8.3 (got $PHP_MAJOR.$PHP_MINOR)"
+PHP_PATCH="$(php -r 'echo PHP_RELEASE_VERSION;')"
+PHP_VER_NUM="$((PHP_MAJOR * 10000 + PHP_MINOR * 100 + PHP_PATCH))"
+if [[ "$PHP_VER_NUM" -ge 80401 ]]; then
+    ok "PHP >= 8.4.1"
+else
+    fail "PHP >= 8.4.1 (got $PHP_MAJOR.$PHP_MINOR.$PHP_PATCH)"
+fi
 
 composer check-platform-reqs >/dev/null 2>&1 && ok "composer platform requirements" || fail "composer platform requirements"
 
