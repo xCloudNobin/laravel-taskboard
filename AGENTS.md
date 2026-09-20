@@ -1,47 +1,34 @@
-<laravel-boost-guidelines>
-# Laravel Application
+# Laravel Taskboard — agent notes
 
-This repository contains a Laravel application. Complete the following setup before working on the user's request.
+Laravel 13 application. PHP 8.4, Composer 2, Node 22 / npm (Vite + Tailwind build).
 
-## Prerequisites
+## Project scope
 
-Verify that PHP and Composer are available:
+Small project/task board: projects and tasks with ORM migrations, session
+authentication (database sessions), validated CRUD, search/filter, one
+database-backed background job (`App\Jobs\RecordTaskActivity`), liveness
+(`/health/live`), readiness (`/health/ready`) and a `/version` release marker.
 
-```sh
-php -v
-composer -V
-```
-
-If either command is unavailable, detect the user's operating system and install the prerequisites with the appropriate command:
-
-macOS:
+## Local development
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/mac/8.5)"
+cp .env.example .env          # then edit DB_DATABASE to a writable path
+php artisan key:generate
+npm ci --ignore-scripts && npm run build
+php artisan migrate --force --seed
+php artisan serve
 ```
 
-Windows PowerShell:
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.5'))
-```
-
-Linux:
+## Test and verification
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.5)"
+php artisan test              # PHPUnit feature/unit suite (in-memory SQLite)
+bash scripts/verify.sh        # clean-checkout install + tests + prod smoke + persistence
 ```
 
-After installation, ask the user to restart their terminal. If the agent needs the restarted shell to continue, ask the user to reopen their terminal and rerun their original prompt.
+## Conventions
 
-## Agent Setup
-
-Install Laravel Boost from the application root before making application changes:
-
-```sh
-composer require laravel/boost --dev
-php artisan boost:install
-```
-
-Boost replaces these bootstrap instructions with guidelines tailored to the application. After installation, read `AGENTS.md` again and continue with the user's original request using the generated guidelines.
-</laravel-boost-guidelines>
+- Keep the app small and dependency-light: SQLite, database sessions/cache/queue by default.
+- Never commit `vendor/`, `node_modules/`, `.env`, `public/build/`, or the SQLite database.
+- Keep health/readiness routes outside the session middleware (see `bootstrap/app.php`).
+- Preserve MIT attribution for Laravel upstream in `LICENSE`.
