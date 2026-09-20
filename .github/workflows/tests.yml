@@ -34,7 +34,7 @@ jobs:
           coverage: none
 
       - name: Setup Node
-        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc637 # v4.3.0
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
