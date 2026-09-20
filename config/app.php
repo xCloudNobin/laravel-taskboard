@@ -123,4 +123,20 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Release Marker
+    |--------------------------------------------------------------------------
+    |
+    | Non-sensitive deployment revision identifiers exposed by the version
+    | endpoint and the UI footer. Set APP_RELEASE to a deploy/build identifier
+    | (for example a tag name or commit short hash) and APP_COMMIT to the
+    | source revision when sandboxing does not provide it automatically.
+    |
+    */
+
+    'release' => env('APP_RELEASE', 'dev'),
+
+    'commit' => env('APP_COMMIT'),
+
 ];

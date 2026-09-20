@@ -1,8 +1,8 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "xcloudnobin/laravel-taskboard",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Laravel task board with ORM migrations, session login, validated CRUD and a database-backed background job.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
