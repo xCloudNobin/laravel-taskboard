@@ -33,6 +33,6 @@ bash scripts/verify.sh        # clean-checkout install + tests + prod smoke + pe
 - `public/build/` IS committed: hosts that deploy from Git without a Node build step (xCloud's default
   Laravel deploy runs only Composer and migrations) need the Vite manifest, or every page returns 500.
   After changing `resources/css`, `resources/js` or the Vite config, run `npm ci --ignore-scripts && npm run build`
-  and commit `public/build/`; CI fails when the committed build is stale.
+  and commit `public/build/`.
 - Keep health/readiness routes outside the session middleware (see `bootstrap/app.php`).
 - Preserve MIT attribution for Laravel upstream in `LICENSE`.

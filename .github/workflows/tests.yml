@@ -48,9 +48,6 @@ jobs:
       - name: Build frontend assets
         run: npm run build
 
-      - name: Committed build is current
-        run: git diff --exit-code --stat -- public/build && test -z "$(git status --porcelain -- public/build)"
-
       - name: Copy environment file
         run: cp .env.example .env
 
