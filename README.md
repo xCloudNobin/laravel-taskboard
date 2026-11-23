@@ -54,6 +54,11 @@ npm install --ignore-scripts
 npm run build
 ```
 
+The built assets (`public/build/`) are committed, so a host that deploys from Git without Node
+(for example xCloud's default Laravel deploy: Composer and migrations only) serves the UI as is.
+The build step above is only needed after changing `resources/css`, `resources/js` or `vite.config.js`;
+commit the new `public/build/` then (CI checks it is current).
+
 Set up the persistent database (SQLite default):
 
 ```sh
